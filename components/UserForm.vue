@@ -1,9 +1,9 @@
 <template>
   <Form @submit="handleSubmit" v-slot="{ errors }">
     <div>
-      <label for="name">Email</label>
-      <Field id="name" name="name" type="name" rules="required|email" />
-      <ErrorMessage name="name" />
+      <label for="email">Email</label>
+      <Field id="email" name="email" type="email" rules="required|email" />
+      <ErrorMessage name="email" />
     </div>
     <div>
       <label for="password">Password</label>

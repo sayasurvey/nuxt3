@@ -1,7 +1,7 @@
 import { defineNuxtPlugin } from 'nuxt/app';
 import { Field, Form, ErrorMessage, defineRule, configure } from 'vee-validate';
 import { required, email, min } from '@vee-validate/rules';
-import { localize } from '@vee-validate/i18n';
+import { localize, setLocale } from '@vee-validate/i18n';
 import ja from '@vee-validate/i18n/dist/locale/ja.json';
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -10,7 +10,18 @@ export default defineNuxtPlugin((nuxtApp) => {
   defineRule('min', min);
 
   configure({
-    generateMessage: localize('ja', ja), // 日本語のエラーメッセージを設定
+    generateMessage: localize({
+      ja
+    }),
+  });
+ 
+  configure({
+    generateMessage: localize('ja', {
+      names: {
+        password: 'パスワード',
+        email: 'メールアドレス'
+      },
+    }),
   });
 
   nuxtApp.vueApp.component('VForm', Form);
